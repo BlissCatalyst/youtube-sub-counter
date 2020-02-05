@@ -16,13 +16,21 @@ export default class SubCounter extends Component {
             .get("http://localhost:4000/api/subs/")
             .then(res => {
                 console.log(res);
+                // statistics: { viewCount: char, commentCount: char, subcriberCount: char, hiddenSubscriberCount: bool, videoCount: char }
+                this.setState({ channel_stats: res.data.items[0].statistics });
             })
             .catch(err => {
                 console.log(err);
+                this.setState({ error: err });
             });
     }
 
     render() {
-        return <div></div>;
+        return (
+            <div>
+                <h1>Current Youtube Subscriber Count</h1>
+                <h2>{this.state.channel_stats.subscriberCount}</h2>
+            </div>
+        );
     }
 }
