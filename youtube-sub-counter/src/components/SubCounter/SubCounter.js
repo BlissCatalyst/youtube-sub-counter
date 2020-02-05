@@ -15,12 +15,10 @@ export default class SubCounter extends Component {
         axios
             .get("http://localhost:4000/api/subs/")
             .then(res => {
-                console.log(res);
                 // statistics: { viewCount: char, commentCount: char, subcriberCount: char, hiddenSubscriberCount: bool, videoCount: char }
                 this.setState({ channel_stats: res.data.items[0].statistics });
             })
             .catch(err => {
-                console.log(err);
                 this.setState({ error: err });
             });
     };
