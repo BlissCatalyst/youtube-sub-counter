@@ -10,7 +10,7 @@ export default class SubCounter extends Component {
         };
     }
 
-    componentDidMount() {
+    refreshSubs = () => {
         // Get initial count number
         axios
             .get("http://localhost:4000/api/subs/")
@@ -23,6 +23,10 @@ export default class SubCounter extends Component {
                 console.log(err);
                 this.setState({ error: err });
             });
+    };
+
+    componentDidMount() {
+        this.refreshSubs();
     }
 
     render() {
