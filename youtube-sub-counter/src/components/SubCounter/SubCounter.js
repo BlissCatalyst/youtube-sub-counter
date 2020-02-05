@@ -12,18 +12,10 @@ export default class SubCounter extends Component {
 
     componentDidMount() {
         // Get initial count number
-        axios({
-            method: "get",
-            url: "https://www.googleapis.com/youtube/v3/channels",
-            params: {
-                key: "AIzaSyAcX2XGaPYMrZe5PbWaSlA-KXiVGqrkEpg", // TODO: Attach this to backend API
-                part: "statistics",
-                // Should make id load dynamically based on channel search
-                id: "UCJwnN8Kmor1p97kEY_j4OLg"
-            }
-        })
+        axios
+            .get("http://localhost:4000/api/subs/")
             .then(res => {
-                console.log(res); // Success, but need to render result
+                console.log(res);
             })
             .catch(err => {
                 console.log(err);
