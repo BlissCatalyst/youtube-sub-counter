@@ -28,7 +28,7 @@ export default class SubCounter extends Component {
     }
 
     render() {
-        setInterval(this.refreshSubs, 5000);
+        // setInterval(this.refreshSubs, 5000);
 
         return (
             <div>
