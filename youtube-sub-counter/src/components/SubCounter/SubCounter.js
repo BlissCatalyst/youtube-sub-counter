@@ -28,6 +28,8 @@ export default class SubCounter extends Component {
     }
 
     render() {
+        setInterval(this.refreshSubs, 5000);
+
         return (
             <div>
                 <h1>Current Youtube Subscriber Count</h1>
