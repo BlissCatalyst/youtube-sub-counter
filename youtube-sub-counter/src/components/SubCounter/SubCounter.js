@@ -31,10 +31,10 @@ export default class SubCounter extends Component {
         // setInterval(this.refreshSubs, 15000);
 
         return (
-            <div>
-                <h1>Current Youtube Subscriber Count</h1>
+            <section className="subscribers">
+                <h1>Youtube Subscribers:</h1>
                 <h2>{this.state.channel_stats.subscriberCount}</h2>
-            </div>
+            </section>
         );
     }
 }
