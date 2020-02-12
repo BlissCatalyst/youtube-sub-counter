@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import numeral from "numeral";
 
 export default class SubCounter extends Component {
     constructor() {
@@ -23,6 +24,17 @@ export default class SubCounter extends Component {
             });
     };
 
+    subAbbreviator = () => {
+        let subCount = Number(this.state.channel_stats.subscriberCount);
+        if (subCount < 1000) {
+            return `${subCount}`;
+        } else if (subCount >= 1000 && subCount < 1000000) {
+            return `${subCount.toExponential().slice(-3)} K`;
+        } else {
+            return `${subCount.toExponential()} M`;
+        }
+    };
+
     componentDidMount() {
         this.refreshSubs();
     }
@@ -33,7 +45,11 @@ export default class SubCounter extends Component {
         return (
             <section className="subscribers">
                 <h1>Youtube Subscribers:</h1>
-                <h2>{this.state.channel_stats.subscriberCount}</h2>
+                <h2>
+                    {numeral(this.state.channel_stats.subscriberCount)
+                        .format("0.0a")
+                        .toUpperCase()}
+                </h2>
             </section>
         );
     }
